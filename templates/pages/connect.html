@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% load crispy_forms_tags %}
+
+{% block 'content' %}
+
+    <br><br><br><br><br><br><br>
+    <div class="container mt-4" >
+        <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 class="mt-2">Login</h2>
+            <hr class="mt-4 mb-4">
+                <form method="post">
+                    {% csrf_token %}
+                    <label>Email*</label>
+                    {% render_field connectForm.email class="form-control" placeholder=form.email.label %}
+                    <label class="mt-4">Password*</label>
+                    {% render_field connectForm.password class="form-control" placeholder=form.password.label %}
+                    <button type="submit" class="mt-4 btn btn-success">Login</button>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock 'content' %}
+
+
+
