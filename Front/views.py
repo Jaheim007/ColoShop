@@ -17,6 +17,9 @@ class Home(View):
     
     def post(request):
         pass
+    
+def updatecart(request):
+    return JsonResponse("Cart Updated", safe=False )
 
 class Shop(View):
     template_name = 'pages/categories.html'

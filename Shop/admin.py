@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Order, OrderItem, Product, Category, ProductColour, ProductImage, Promotion, Comments, DealOfTheWeek, Best_Sellers, Customer
+from .models import  Product, Category, ProductColour, ProductImage, Promotion, Comments, DealOfTheWeek, Best_Sellers, Customer
 
 @admin.register(Customer)
 class Customers(admin.ModelAdmin):
@@ -86,22 +86,3 @@ class DealOfTheWeek(admin.ModelAdmin):
         'products'
     )
     
-@admin.register(Order)
-class Order(admin.ModelAdmin):
-    
-    list_display = (
-        'customer',
-        'date_ordered',
-        'complete',
-        'transaction_id'
-    )
-    
-@admin.register(OrderItem)
-class OrderItem(admin.ModelAdmin):
-    
-    list_display = (
-        'product',
-        'quantity',
-        'date_added'
-    )
-
