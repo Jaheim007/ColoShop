@@ -224,7 +224,11 @@
     <script src="{% static 'assets/js/single_custom.js' %} "></script>
     <script src="{% static 'assets/js/contact_custom.js' %} "></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
     <script>
         var app2 = new Vue({
             el: "#contact",
@@ -282,6 +286,59 @@
             },
             delimiters: ['%{', '}']
         })
+    </script>
+
+    
+    <script>
+        var app2 = new Vue({
+            el: "#newsletter",
+            data: {
+                email:'', 
+                url:" {% url 'news_verify' %}"
+            },
+            methods:{
+                post_data(){
+                    if(this.email === '' ){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error...',
+                            text: 'Veuillez remplir tous les champs',
+                          })
+                    }
+                    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email Error',
+                            text: 'Veuillez saisir votre adresse e-mail dans ce format votre@exemple.com',
+                          })
+                    }
+                    else{
+                      
+                        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                        axios.defaults.xsrfCookieName = 'csrftoken'
+    
+                        let form = new FormData()
+                        form.append('email', this.email)
+                        axios.post(this.url, form).then((response)=>{
+                            if(response.data.success){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.data.msg,
+    
+                                })
+                                
+                                this.email = ''
+                            }
+                        })
+    
+                    }
+                   
+                }
+            },
+            delimiters: ['%{', '}']
+        })
+    </script>
     </body>
     
 </html>

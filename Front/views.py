@@ -57,6 +57,26 @@ def verification(request):
         }
         
     return JsonResponse(data, safe=False)
+
+def news_letter(request):
+    msg =''
+    success = True
+    if request.method == "POST":
+        email = request.POST.get("email")
+        
+        contact = NewsLetter( 
+            email = email, 
+        )
+        
+        contact.save()
+        msg = 'Un message NewsLtters Success'
+        
+        data = {
+        'msg': msg,
+        'success': success
+        }
+        
+    return JsonResponse(data, safe=False)
     
     
 class ShopSingle(View):
