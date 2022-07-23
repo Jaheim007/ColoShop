@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/single_styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/single_responsive.css' %}">
-	<script>
+	{% comment %} <script>
 		let user = "{{request.user}}"
 		function getCookie(name) {
 			let cookieValue = null;
@@ -37,7 +37,7 @@
 			return cookieValue;
 		}
 		const csrftoken = getCookie('csrftoken');
-	</script>
+	</script> {% endcomment %}
 
 </head>
 
@@ -187,6 +187,7 @@
 <script src={% static 'assets/plugins/easing/easing.js' %}></script>
 <script src={% static 'assets/js/custom.js' %}></script>
 <script src={% static 'assets/js/cart.js' %}></script>
+
 </body>
 
 </html>

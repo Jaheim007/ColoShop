@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/contact_styles.css' %} ">
 <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/contact_responsive.css' %} ">
 
+
 </head>
 
 
@@ -75,8 +76,8 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="account_selection">
-                                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                                            <li><a href="{% url 'connection' %}"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                                            <li><a href="{% url 'registeration' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -223,7 +224,64 @@
     <script src="{% static 'assets/js/single_custom.js' %} "></script>
     <script src="{% static 'assets/js/contact_custom.js' %} "></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-
+    
+    <script>
+        var app2 = new Vue({
+            el: "#contact",
+            data: {
+                name: '',
+                email:'', 
+                website:'',
+                message:'',
+                url:" {% url 'verify' %}"
+            },
+            methods:{
+                post_data(){
+                    if(this.name === '' || this.email === '' || this.website === '' || this.message ===''){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error...',
+                            text: 'Veuillez remplir tous les champs',
+                          })
+                    }
+                    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email Error',
+                            text: 'Veuillez saisir votre adresse e-mail dans ce format votre@exemple.com',
+                          })
+                    }
+                    else{
+                      
+                        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                        axios.defaults.xsrfCookieName = 'csrftoken'
+    
+                        let form = new FormData()
+                        form.append('name', this.name)
+                        form.append('email', this.email)
+                        form.append('website', this.website)
+                        form.append('message', this.message)
+                        axios.post(this.url, form).then((response)=>{
+                            if(response.data.success){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.data.msg,
+    
+                                })
+                                this.name = ''
+                                this.email = ''
+                                this.website = ''
+                                this.message = ''
+                            }
+                        })
+    
+                    }
+                   
+                }
+            },
+            delimiters: ['%{', '}']
+        })
     </body>
     
 </html>

@@ -18,15 +18,17 @@ from django.urls import path, include
 from Front import views
 from django.conf import settings
 from django.conf.urls.static import static
+from Clients import views as clients
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include("Front.urls")),
     path('', views.Home.as_view(), name="home"),  
     path('shop/', views.Shop.as_view(), name="shop"),
     path('shopsingle/', views.ShopSingle.as_view(), name="shopsingle"), 
-    path('contact/', views.Contact.as_view(), name="contact"),
-    path('connect/', views.Connection.as_view(), name="connection"), 
-    path('register/', views.Registeration.as_view(), name="registeration"),
+    # path('contact/', views.Contact.as_view(), name="contact"),
+    path('connect/', clients.Connection.as_view(), name="connection"), 
+    path('register/', clients.Register.as_view(), name="registeration"),
     path('cart/', views.Cart.as_view(), name="cart")
 ]
 

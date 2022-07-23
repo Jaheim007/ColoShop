@@ -4,8 +4,6 @@
 
 {% load widget_tweaks %}
 
-{% load crispy_forms_tags %}
-
 {% block 'content' %}
 
     <br><br><br><br><br><br><br>
@@ -14,13 +12,16 @@
         <div class="col-8">
             <h2 class="mt-2">Login</h2>
             <hr class="mt-4 mb-4">
-                <form method="post">
+                <form method="POST">
+
                     {% csrf_token %}
-                    <label>Email*</label>
-                    {% render_field connectForm.email class="form-control" placeholder=form.email.label %}
-                    <label class="mt-4">Password*</label>
-                    {% render_field connectForm.password class="form-control" placeholder=form.password.label %}
+
+                    {% render_field form.username class="mt-4 form-control" placeholder=form.username.label %}
+
+                    {% render_field form.password class="mt-4 form-control" placeholder=form.password.label %}
+
                     <button type="submit" class="mt-4 btn btn-success">Login</button>
+
                     <br>
                 </form>
             </div>

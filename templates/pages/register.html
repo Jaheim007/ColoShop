@@ -4,8 +4,6 @@
 
 {% load widget_tweaks %}
 
-{% load crispy_forms_tags %}
-
 {% block 'content' %}
 
     <br><br><br><br><br><br><br>
@@ -14,18 +12,22 @@
         <div class="col-8">
             <h2 class="mt-2">Register</h2>
             <hr class="mt-4 mb-4">
-                <form method="post">
+                <form method="POST">
+
                     {% csrf_token %}
-                    <label>First name*</label>
-                    {% render_field registerForm.first_name class="form-control" placeholder=form.first_name.label %}
-                    <label class="mt-4">Last name*</label>
-                    {% render_field registerForm.last_name class="form-control" placeholder=form.last_name.label %}
-                    <label class="mt-4">Email*</label>
-                    {% render_field registerForm.email class="form-control" placeholder=form.email.label %}
-                    <label class="mt-4">Password*</label>
-                    {% render_field registerForm.password class="form-control" placeholder=form.password.label %}
-                    <label class="mt-4">Confirm Password*</label>
-                    {% render_field registerForm.confirm_password class="form-control" placeholder=form.confirm_password.label %}
+
+                    {% render_field form.first_name class="mt-4 form-control" placeholder=form.first_name.label %}
+
+                    {% render_field form.last_name class="mt-4 form-control" placeholder=form.last_name.label %}
+
+                    {% render_field form.username class="mt-4 form-control" placeholder=form.username.label %}
+                    
+                    {% render_field form.email class="mt-4 form-control" placeholder=form.email.label %}
+                 
+                    {% render_field form.password1 class="mt-4 form-control" placeholder=form.password1.label %}
+
+                    {% render_field form.password2 class="mt-4 form-control" placeholder=form.password2.label %}
+
                     <button type="submit" class="mt-4 btn btn-success">Register</button>
                     <br>
                 </form>
