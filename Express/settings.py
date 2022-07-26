@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'Front',
     'colorfield',
     'widget_tweaks',
-    'crispy_forms'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

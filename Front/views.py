@@ -13,14 +13,31 @@ class Home(View):
     def get(self,request): 
         categories = Category.objects.filter(active=True)
         products = Product.objects.filter(active=True)
-        liste = Category.objects.all()
         return render(request, self.template_name, locals())
     
-    def post(request):
-        pass
+def post_home(request):      
+    msg =''
+    success = True
+    if request.method == "POST":
+        email = request.POST.get("email")
+    
+    newsletters = NewsLetter( 
+        email = email, 
+    )
+    
+    newsletters.save()
+    msg = 'Votre message a éte reçu'
+        
+    data = {
+        'msg': msg,
+        'success': success
+        }
+    
+    return JsonResponse(data, safe=False)
+        
     
 def updatecart(request):
-    return JsonResponse("Cart Updated", safe=False )
+    return JsonResponse("Cart Updated", safe=False)
 
 class Shop(View):
     template_name = 'pages/categories.html'

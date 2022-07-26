@@ -67,7 +67,8 @@ class Product(models.Model):
     #This Function is for when an article is new 
     def is_new(self):
         
-        now = datetime.datetime.now()
+        now = 
+        datetime.datetime.now()
         
         dif_date = now - self.created_at 
         
