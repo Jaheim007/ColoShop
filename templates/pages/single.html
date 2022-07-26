@@ -13,7 +13,7 @@
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
 						<li><a href="{% url 'home' %}">Home</a></li>
-						<li><a href="{% url 'home' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{category.name}}</a></li>
+						<li><a href="{% url 'home' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{products.categories.first}}</a></li>
 						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>{{products.name}}</a></li>
 					</ul>
 				</div>

@@ -84,9 +84,8 @@ def news_letter(request):
 class ShopSingle(View):
     template_name = 'pages/single.html'
     
-    def get(self,request, details,liste): 
+    def get(self,request, details): 
         products = Product.objects.get(id=details)
-        category = Category.objects.get(name=liste)
         return render(request, self.template_name, locals())
     
     def post(self, request):
