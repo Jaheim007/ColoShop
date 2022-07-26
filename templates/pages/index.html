@@ -70,6 +70,7 @@
 						<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
 							<!-- Product 1 -->
+							
 							{% for product in products %}
 								<div class="product-item {{product.categories.first}} ">
 									<div class="product discount product_filter">
@@ -85,7 +86,7 @@
 										
 										<div class="product_info">
 											<h6 class="product_name">
-												<a href="single.html">
+												<a href="{% url 'shopsingle' category.name product.id %}">
 												{{ product.name }}
 												</a>
 											</h6>

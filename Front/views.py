@@ -1,3 +1,4 @@
+from os import name
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import JsonResponse
@@ -12,6 +13,7 @@ class Home(View):
     def get(self,request): 
         categories = Category.objects.filter(active=True)
         products = Product.objects.filter(active=True)
+        liste = Category.objects.all()
         return render(request, self.template_name, locals())
     
     def post(request):
@@ -82,8 +84,10 @@ def news_letter(request):
 class ShopSingle(View):
     template_name = 'pages/single.html'
     
-    def get(self , request):
-        return render(request, self.template_name)
+    def get(self,request, details,liste): 
+        products = Product.objects.get(id=details)
+        category = Category.objects.get(name=liste)
+        return render(request, self.template_name, locals())
     
     def post(self, request):
         pass

@@ -12,9 +12,9 @@
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
-						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
+						<li><a href="{% url 'home' %}">Home</a></li>
+						<li><a href="{% url 'home' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{category.name}}</a></li>
+						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>{{products.name}}</a></li>
 					</ul>
 				</div>
 
@@ -28,8 +28,8 @@
 						<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 							<div class="single_product_thumbnails">
 								<ul>
-									<li><img src="{% static 'assets/images/single_1_thumb.jpg' %} " alt="" data-image="{% static 'assets/images/single_1.jpg' %} "></li>
-									<li class="active"><img src="{% static 'assets/images/single_2_thumb.jpg' %} " alt="" data-image="{% static 'assets/images/single_2.jpg' %} "></li>
+									<li class="active"><img src="{% static 'assets/images/single_1_thumb.jpg' %} " alt="" data-image="{% static 'assets/images/single_1.jpg' %} "></li>
+									<li><img src="{% static 'assets/images/single_2_thumb.jpg' %} " alt="" data-image="{% static 'assets/images/single_2.jpg' %} "></li>
 									<li><img src="{% static 'assets/images/single_3_thumb.jpg' %} " alt="" data-image="{% static 'assets/images/single_3.jpg' %} "></li>
 								</ul>
 							</div>
@@ -45,7 +45,7 @@
 			<div class="col-lg-5">
 				<div class="product_details">
 					<div class="product_details_title">
-						<h2>Pocket cotton sweatshirt</h2>
+						<h2>{{products.name}}</h2>
 						<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
 					</div>
 					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">

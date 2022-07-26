@@ -25,8 +25,7 @@ urlpatterns = [
     path('', include("Front.urls")),
     path('', views.Home.as_view(), name="home"),  
     path('shop/', views.Shop.as_view(), name="shop"),
-    path('shopsingle/', views.ShopSingle.as_view(), name="shopsingle"), 
-    # path('contact/', views.Contact.as_view(), name="contact"),
+    path('shopsingle/<str:liste>/<int:details>/', views.ShopSingle.as_view(), name="shopsingle"), 
     path('connect/', clients.Connection.as_view(), name="connection"), 
     path('register/', clients.Register.as_view(), name="registeration"),
     path('cart/', views.Cart.as_view(), name="cart")
