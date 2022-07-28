@@ -5,8 +5,6 @@ from django.http import JsonResponse
 from .models import NewsLetter, Contact, Banner, Service, Site_Info
 from Shop.models import Category, Product, ProductColour, ProductImage, Promotion, Comments, DealOfTheWeek, Best_Sellers 
 
-
-
 class Home(View):
     template_name = 'pages/index.html'
     
@@ -45,10 +43,19 @@ class Shop(View):
     
     def get(self, request):
         categories = Category.objects.filter(active=True)
+        products = Product.objects.filter(active = True)
         return render(request, self.template_name, locals())
     
     def post(request):
         pass
+    
+def liste(request, category):
+    cat = Product.objects.get(id= category)
+    #print(cat.categories.first())
+    products = Product.objects.all().filter(categories=cat.categories.first())
+    #pdr =  Product.objects.get(name=products)
+    print(products)
+    return render(request, "pages/categories.html" , locals())
     
 def contact(request):
     site = Site_Info.objects.filter().first()

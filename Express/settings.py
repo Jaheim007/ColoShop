@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'colorfield',
     'widget_tweaks',
 ]
+
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -135,7 +138,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-# CART_SESSION_ID = 'cart'
+
 
 
 # Default primary key field type
