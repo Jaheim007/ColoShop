@@ -13,6 +13,7 @@ class Home(View):
     def get(self,request): 
         categories = Category.objects.filter(active=True)
         products = Product.objects.filter(active=True)
+        sellers = Best_Sellers.objects.filter(active = True)
         return render(request, self.template_name, locals())
     
 def post_home(request):      
@@ -43,13 +44,15 @@ class Shop(View):
     template_name = 'pages/categories.html'
     
     def get(self, request):
+        categories = Category.objects.filter(active=True)
         return render(request, self.template_name, locals())
     
     def post(request):
         pass
     
 def contact(request):
-    return render(request, "pages/contact.html")
+    site = Site_Info.objects.filter().first()
+    return render(request, "pages/contact.html", locals())
     
 def verification(request):
     msg =''

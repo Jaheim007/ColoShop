@@ -84,8 +84,7 @@ class Site_Info(models.Model):
     opening_days = models.CharField(max_length=255)
     closed_day = models.CharField(max_length=254)
     phone = PhoneNumberField()
-    map_location = models.URLField()
-    
+    map_location = models.TextField()
     
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.BooleanField(default=False)

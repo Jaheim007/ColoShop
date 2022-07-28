@@ -27,6 +27,7 @@
 				<div id="google_map">
 					<div class="map_container">
 						<div id="map"></div>
+						{{site.map_location}}
 					</div>
 				</div>
 			</div>
@@ -41,15 +42,15 @@
 					<h1>Contact Us</h1>
 					<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 					<div>
-						<p>(800) 686-6688</p>
-						<p>info.deercreative@gmail.com</p>
+						<p>{{site.phone}}</p>
+						<p>{{site.email}}</p>
 					</div>
 					<div>
 						<p>mm</p>
 					</div>
 					<div>
-						<p>Open hours: 8.00-18.00 Mon-Fri</p>
-						<p>Sunday: Closed</p>
+						<p>Open hours: 8.00-18.00 {{site.opening_days}}</p>
+						<p>{{site.closed_day}}: Closed</p>
 					</div>
 				</div>
 
@@ -108,7 +109,7 @@
 						{% csrf_token %}
 						<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
 							<input id="newsletter_email" name="email" v-model="email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
-							<button id="newsletter_submit" type="submit" @click.prevent="post_data" class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
+							<button id="newsletter_submit" type="submit" @click.prevent="post_data" class="newsletter_submit_btn trans_300" value="Submit">Subscribe</button>
 						</div>
 					</form>
 				</div>
