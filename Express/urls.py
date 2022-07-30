@@ -28,7 +28,6 @@ urlpatterns = [
     path('shopsingle/<int:details>/', views.ShopSingle.as_view(), name="shopsingle"), 
     path('connect/', clients.Connection.as_view(), name="connection"), 
     path('register/', clients.Register.as_view(), name="registeration"),
-    path('cart/', views.Cart.as_view(), name="cart")
 ]
 
 if settings.DEBUG:

@@ -118,15 +118,6 @@ class ShopSingle(View):
     def post(self, request):
         pass
     
-class Cart(View):
-    template_name = 'pages/cart.html'
-    
-    def get(self, request):
-        return render(request, self.template_name)
-    
-    def post(request):
-        pass
+
         
 
-
-# Create your views here.

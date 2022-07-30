@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Clients',
     'Shop',
     'Front',
+    'Cart',
     'colorfield',
     'widget_tweaks',
 ]
