@@ -20,7 +20,7 @@ class Register(View):
             password1 = request.POST.get("password1")
             password2 = request.POST.get("password2")
 
-            user = User(
+            user = User.objects.create_user(
                 first_name = first_name,
                 last_name = last_name,
                 username = username, 

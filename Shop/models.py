@@ -46,7 +46,7 @@ class Product(models.Model):
         
     #Models for the Products Sections
     name = models.CharField(max_length=20, blank=False)
-    original_price = models.FloatField(max_length=50, blank=False)
+    original_price = models.PositiveIntegerField()
     promotion_reduction = models.PositiveIntegerField(default=0)
     promotion_percentage = models.PositiveIntegerField(validators=[MaxValueValidator(100)],default=0)
     stock = models.PositiveIntegerField()

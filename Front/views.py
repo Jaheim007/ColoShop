@@ -14,26 +14,26 @@ class Home(View):
         sellers = Best_Sellers.objects.filter(active = True)
         return render(request, self.template_name, locals())
     
-def post_home(request):      
-    msg =''
-    success = True
-    if request.method == "POST":
-        email = request.POST.get("email")
-    
-    newsletters = NewsLetter( 
-        email = email, 
-    )
-    
-    newsletters.save()
-    msg = 'Votre message a éte reçu'
+    def post(request):      
+        msg =''
+        success = True
+        if request.method == "POST":
+            email = request.POST.get("email")
         
-    data = {
-        'msg': msg,
-        'success': success
-        }
-    
-    return JsonResponse(data, safe=False)
+        newsletters = NewsLetter( 
+            email = email, 
+        )
         
+        newsletters.save()
+        msg = 'Votre message a éte reçu'
+            
+        data = {
+            'msg': msg,
+            'success': success
+            }
+        
+        return JsonResponse(data, safe=False)
+            
     
 def updatecart(request):
     return JsonResponse("Cart Updated", safe=False)
@@ -49,10 +49,9 @@ class Shop(View):
     def post(request):
         pass
     
-def liste(request, category):
+def liste(request, category ):
     cat = Product.objects.get(id= category)
-    #print(cat.categories.first())
-    products = Product.objects.all().filter(categories=cat.categories.first())
+    products = Product.objects.filter(active = True, categories = category)
     #pdr =  Product.objects.get(name=products)
     print(products)
     return render(request, "pages/categories.html" , locals())

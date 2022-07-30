@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/single_styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/styles/single_responsive.css' %}">
+    
 
 </head>
 
@@ -177,7 +178,7 @@
         el: "#newsletters",
         data: {
             email:'', 
-            url:" {% url 'post_home' %}"
+            url:" {% url 'home' %}"
         },
         methods:{
             post_data(){

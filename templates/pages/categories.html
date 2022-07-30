@@ -13,7 +13,7 @@
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+						<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>{{categories.name}}</a></li>
 					</ul>
 				</div>
 
@@ -28,9 +28,7 @@
 							<ul class="sidebar_categories">
 								
 									<li class="active" data-filter="{{category.name}}"><a href="{% url 'shop_category' category.id %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>{{category.name}}</a></li>
-								
-									{% comment %} <li><a href="{% url 'shop_category' category.id %}">{{category.name}}</a></li> {% endcomment %}
-								
+									
 							</ul>
 						{% endfor %}
 					</div>
@@ -141,7 +139,7 @@
 
 									<!-- Product 1 -->
 									{% for product in products %}
-									{% if product.categories == cat.categories.first %}
+									{% comment %} {% if product.categories == cat.categories.first %} {% endcomment %}
 									<div class="product-item {{product.categories.first}}">
 									
 
@@ -160,7 +158,7 @@
 										</div>
 										<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 									</div>
-									{% endif %}
+								
 									{% endfor %}
 								
 
