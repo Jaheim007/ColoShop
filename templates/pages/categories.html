@@ -9,11 +9,11 @@
 			<div class="col product_section clearfix">
 
 				<!-- Breadcrumbs -->
-
+				
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>{{categories.name}}</a></li>
+						<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>{{cat.categories.first}}</a></li>
 					</ul>
 				</div>
 
@@ -27,7 +27,7 @@
 						{% for category in categories %}
 							<ul class="sidebar_categories">
 								
-									<li class="active" data-filter="{{category.name}}"><a href="{% url 'shop_category' category.id %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>{{category.name}}</a></li>
+									<li class="active" data-filter="{{category.name}}"><a href=" {% url 'shop_category' category.id %}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>{{category.name}}</a></li>
 									
 							</ul>
 						{% endfor %}

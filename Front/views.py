@@ -49,12 +49,14 @@ class Shop(View):
     def post(request):
         pass
     
-def liste(request, category ):
+def liste(request, category):
+    categories = Category.objects.filter(active=True)
+    products = Product.objects.filter(active = True)
     cat = Product.objects.get(id= category)
     products = Product.objects.filter(active = True, categories = category)
-    #pdr =  Product.objects.get(name=products)
+
     print(products)
-    return render(request, "pages/categories.html" , locals())
+    return render(request, 'pages/categories.html' , locals())
     
 def contact(request):
     site = Site_Info.objects.filter().first()

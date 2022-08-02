@@ -1,4 +1,3 @@
-from itertools import product
 from django.db import models
 from colorfield.fields import ColorField
 from django.core.validators import MaxValueValidator
