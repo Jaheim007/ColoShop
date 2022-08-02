@@ -29,7 +29,7 @@
 					<div class="col-md-4">
 						<div class="banner_item align-items-center" style="background-image:url({{cat.image.url}})">
 							<div class="banner_category">
-								<a href="categories.html">{{cat.name}}</a>
+								<a href="{% url 'home_category' cat.id %}">{{cat.name}}</a>
 							</div>
 						</div>
 					</div>
